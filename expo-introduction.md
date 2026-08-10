@@ -1,0 +1,65 @@
+## Introduction to Expo
+
+### What is Expo?
+Expo is an open-source framework for building universal, cross-platform applications targeting Android, iOS, and Web using React and TypeScript/JavaScript. It provides:
+
+1. Developer Tooling & SDK: Standardized cross-platform APIs (camera, storage, haptics, notifications) and file-based routing (Expo Router).
+
+2. Cloud Infrastructure (EAS): Optional continuous integration, cloud compiling, binary submission, and instant Over-The-Air (OTA) updates.
+
+* The Expo developer tools are free (open source). They can be used directly without an account at Expo.
+* To use the cloud infrastructure (EAS: Expo Application Services), needed for example to compile release builds, a freemium model is applied. An account at expo.dev is mandatory. There exists a free tier, like a number of free builds per month, after which it will be charged for further builds.
+
+### Expo Basic Architecture
+
+Top-Down:
+1. JavaScript / React Layer
+   - App Components, Expo Router, Business Logic, State
+
+2. Expo SDK JavaScript APIs
+   - expo-camera, expo-secure-store, expo-location, etc.
+   - The SDK wraps complex native phone hardware into unified JavaScript APIs
+
+Between 2->3: JSI / C++ Direct Calls
+
+3. Expo Modules API (Native Bridge)
+   - Swift DSL on iOS  <--->  Kotlin DSL on Android
+   - This layer bypasses legacy asynchronous JSON bridges, using React Native's JSI (JavaScript Interface) to allow JavaScript to invoke C++ and native OS functions directly with near-zero latency.
+
+4. Host Platform OS Engine
+   - iOS (UIKit / Swift)
+   - Android (Views / Kotlin)
+
+### How to run / debug
+
+#### Setup
+* You can use the commands `npx` (comes with `npm`) or `yarn`
+* Create a project:
+  - npx: `npx create-expo-app@latest .`
+  - yarn: `yarn create expo-app .`
+
+#### Run / Debug
+* Run:
+  - npx: `npx expo start`
+  - yarn: `yarn expo start`
+* The command displays options to run on the web (`w`), android (`a`) or iOS (`i`) and to scan a QR code to run in the app in Expo Go on a mobile device. This is similar to the options displayed after `flutter run`
+* Debugging: Options `j` to open the debugger and `r` to reload the app
+
+### Expo Go vs development builds:
+* Expo Go is a Sandbox Client for iOS and Android (downloadable on the App-/PlayStore). It can scan the QR code provided by `npx expo start` and quickly run the app, inside the sandbox, on the android or iOS device
+  - Fast to setup and run (No XCode, Android Studio or Mac required)
+  - Limited to pre-included standard Expo SDK APIs (not all native features are supported)
+  - Used for prototyping, learning, general testing that does not include unsupported native features
+
+* A development build is a custom binary compiled to run directly on the android or iOS device (Exact Swift/Kotlin Code)
+  - Requires local native tooling (Xcode/Android Studio) or EAS Build in the cloud
+  - Unlimited native code support
+  - Used for testing native third-party SDKs (payment gateways, custom bluetooth drivers, etc.), modifying native code and for production testing
+
+### Migrating from Flutter to Expo
+| Flutter | Expo / React Native Equivalent | Notes and Trade-Offs |
+| --- | --- | --- |
+| GoRouter | Expo Router | `ShellRoute` translates directly to Expo Router's `_layout.tsx` |
+| Hive | `AsyncStorage` *or* `react-native-mmkv` | `react-native-mmkv` is up to 30x faster but requires a dev build |
+| Riverpod | TanStack Query | |
+| ListView.builder | FlashList for long and/or complex lists. Built-in FlatList struggles with long/complex lists | |
