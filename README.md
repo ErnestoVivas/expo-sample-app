@@ -1,2 +1,2 @@
-# expo-sample-app
-A sample app to study the expo framework.
+# Expo Sample App
+A sample app to study the Expo framework.
