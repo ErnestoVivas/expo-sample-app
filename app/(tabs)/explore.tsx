@@ -4,6 +4,7 @@ import { Pressable, ScrollView, StyleSheet, View } from 'react-native';
 import ParallaxScrollView from '@/components/parallax-scroll-view';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
+import { Collapsible } from '@/components/ui/collapsible';
 import { IconSymbol } from '@/components/ui/icon-symbol';
 import { Colors, Fonts } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
@@ -36,6 +37,12 @@ export default function TabTwoScreen() {
           Explore
         </ThemedText>
       </ThemedView>
+
+      <Collapsible title="Collapsible Item">
+        <ThemedText>This is a collapsible item.</ThemedText>
+      </Collapsible>
+
+      <View style={[styles.divider, { backgroundColor: theme.icon }]} />
 
       <ThemedView style={styles.section}>
         <ThemedText style={styles.sectionTitle}>Buttons</ThemedText>
