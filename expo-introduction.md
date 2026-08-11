@@ -8,7 +8,7 @@ Expo is an open-source framework for building universal, cross-platform applicat
 2. Cloud Infrastructure (EAS): Optional continuous integration, cloud compiling, binary submission, and instant Over-The-Air (OTA) updates.
 
 * The Expo developer tools are free (open source). They can be used directly without an account at Expo.
-* To use the cloud infrastructure (EAS: Expo Application Services), a freemium model is applied. An account at expo.dev is mandatory. There exists a free tier, like a number of free builds per month, after which it will be charged for further builds.
+* To use the cloud infrastructure (EAS: Expo Application Services), a freemium model is applied. An account at expo.dev is mandatory. There exists a free tier (like 15 free builds per month for iOS and android), after which it will be charged for further builds.
 * Is EAS mandatory for production? No, you can build signed release builds (APKs or IPAs) if you have the local tools (Android SDK and XCode). However, EAS provides useful infrastructure like managed signing credentials, cloud builds without own hardware (e.g. Mac), easier Play / App Store submission pipelines, EAS Update hosting (over-the-air JS/asset updated), among others. EAS allows to automate the store-submission process.
 
 ### Expo Basic Architecture
@@ -35,6 +35,7 @@ Between 2->3: JSI / C++ Direct Calls
 
 #### Setup
 * You can use the commands `npx` (comes with `npm`) or `yarn`
+* To use EAS, install it with `npm install --global eas-cli`
 * Create a project:
   - npx: `npx create-expo-app@latest .`
   - yarn: `yarn create expo-app .`
@@ -45,6 +46,12 @@ Between 2->3: JSI / C++ Direct Calls
   - yarn: `yarn expo start`
 * The command displays options to run on the web (`w`), android (`a`) or iOS (`i`) and to scan a QR code to run the app in Expo Go on a mobile device. This is similar to the options displayed after `flutter run`
 * Debugging: Options `j` to open the debugger and `r` to reload the app
+* View logs in the web console (`F12`) or directly on the terminal when the app is running on a physical device or a simulator
+
+#### Build with EAS
+* Link the remote project: `eas init --id <project-id>`
+* Build an android release: `eas build --platform android --profile production`
+  - Similar commands for debug builds, iOS buids, etc.
 
 ### Expo Go vs development builds:
 * Expo Go is a Sandbox Client for iOS and Android (downloadable on the App-/PlayStore). It can scan the QR code provided by `npx expo start` and quickly run the app, inside the sandbox, on the android or iOS device
