@@ -9,7 +9,7 @@ Expo is an open-source framework for building universal, cross-platform applicat
 
 * The Expo developer tools are free (open source). They can be used directly without an account at Expo.
 * To use the cloud infrastructure (EAS: Expo Application Services), a freemium model is applied. An account at expo.dev is mandatory. There exists a free tier (like 15 free builds per month for iOS and android), after which it will be charged for further builds.
-* Is EAS mandatory for production? No, you can build signed release builds (APKs or IPAs) if you have the local tools (Android SDK and XCode). However, EAS provides useful infrastructure like managed signing credentials, cloud builds without own hardware (e.g. Mac), easier Play / App Store submission pipelines, EAS Update hosting (over-the-air JS/asset updated), among others. EAS allows to automate the store-submission process.
+* Is EAS mandatory for production? No, you can build signed release builds (AABs/APKs or IPAs) if you have the local tools (Android SDK and XCode). However, EAS provides useful infrastructure like managed signing credentials, cloud builds without own hardware (e.g. Mac), easier Play / App Store submission pipelines, EAS Update hosting (over-the-air JS/asset updated), among others. EAS allows to automate the store-submission process.
 
 ### Expo Basic Architecture
 
