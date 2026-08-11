@@ -19,9 +19,11 @@ export default function UserScreen() {
   const [photoUri, setPhotoUri] = useState<string | null>(null);
 
   const pickImage = async () => {
+    console.log('[UserScreen] image_picker_opened');
     const permission = await ImagePicker.requestMediaLibraryPermissionsAsync();
 
     if (!permission.granted) {
+      console.log('[UserScreen] image_picker_permission_denied');
       Alert.alert('Permission required', 'Please allow access to your photo library to continue.');
       return;
     }
@@ -34,9 +36,18 @@ export default function UserScreen() {
     });
 
     if (result.canceled || !result.assets?.length) {
+      console.log('[UserScreen] image_picker_canceled');
       return;
     }
 
+    console.log('[UserScreen] image_picked', {
+      uri: result.assets[0].uri,
+      fileName: result.assets[0].fileName,
+      fileSize: result.assets[0].fileSize,
+      mimeType: result.assets[0].mimeType,
+      width: result.assets[0].width,
+      height: result.assets[0].height,
+    });
     setPhotoUri(result.assets[0].uri);
   };
 

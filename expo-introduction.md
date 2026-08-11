@@ -8,7 +8,8 @@ Expo is an open-source framework for building universal, cross-platform applicat
 2. Cloud Infrastructure (EAS): Optional continuous integration, cloud compiling, binary submission, and instant Over-The-Air (OTA) updates.
 
 * The Expo developer tools are free (open source). They can be used directly without an account at Expo.
-* To use the cloud infrastructure (EAS: Expo Application Services), needed for example to compile release builds, a freemium model is applied. An account at expo.dev is mandatory. There exists a free tier, like a number of free builds per month, after which it will be charged for further builds.
+* To use the cloud infrastructure (EAS: Expo Application Services), a freemium model is applied. An account at expo.dev is mandatory. There exists a free tier, like a number of free builds per month, after which it will be charged for further builds.
+* Is EAS mandatory for production? No, you can build signed release builds (APKs or IPAs) if you have the local tools (Android SDK and XCode). However, EAS provides useful infrastructure like managed signing credentials, cloud builds without own hardware (e.g. Mac), easier Play / App Store submission pipelines, EAS Update hosting (over-the-air JS/asset updated), among others. EAS allows to automate the store-submission process.
 
 ### Expo Basic Architecture
 
@@ -42,7 +43,7 @@ Between 2->3: JSI / C++ Direct Calls
 * Run:
   - npx: `npx expo start`
   - yarn: `yarn expo start`
-* The command displays options to run on the web (`w`), android (`a`) or iOS (`i`) and to scan a QR code to run in the app in Expo Go on a mobile device. This is similar to the options displayed after `flutter run`
+* The command displays options to run on the web (`w`), android (`a`) or iOS (`i`) and to scan a QR code to run the app in Expo Go on a mobile device. This is similar to the options displayed after `flutter run`
 * Debugging: Options `j` to open the debugger and `r` to reload the app
 
 ### Expo Go vs development builds:
