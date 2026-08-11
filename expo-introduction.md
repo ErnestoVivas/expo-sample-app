@@ -51,7 +51,7 @@ Between 2->3: JSI / C++ Direct Calls
 #### Build with EAS
 * Link the remote project: `eas init --id <project-id>`
 * Build an android release: `eas build --platform android --profile production`
-  - Similar commands for debug builds, iOS buids, etc.
+  - Similar commands for debug builds, iOS builds, etc.
 
 ### Expo Go vs development builds:
 * Expo Go is a Sandbox Client for iOS and Android (downloadable on the App-/PlayStore). It can scan the QR code provided by `npx expo start` and quickly run the app, inside the sandbox, on the android or iOS device
